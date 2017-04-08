@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, Row, Col, Icon } from 'react-materialize';
-import logo from './logo.svg';
+import { Button, Row, Col } from 'react-materialize';
 import './App.css';
 
 class App extends Component {
@@ -12,9 +11,9 @@ class App extends Component {
           <h2><code>( o )( o ) && (_*_)</code></h2>
 
         </div>
-        <p className="App-intro">
-          <h4>Track your baby's inputs and outputs</h4>
-        </p>
+        <h4 className="App-intro">
+          Track your baby's inputs and outputs
+        </h4>
 
         <div>
           <Row>
@@ -44,14 +43,14 @@ class App extends Component {
                       <p>How long did you nurse?</p>
                     </div>
 
-                    <div className="input-field col s6">
-                      <label for="timepicker">Start time</label>
-                      <input id="timepicker" class="timepicker" type="time" />
+                    <div className="col s6">
+                      <label for="start_time">Start time</label>
+                      <input id="start_time" className="timepicker" type="time" />
                     </div>
 
-                    <div className="input-field col s6">
-                      <label for="timepicker">End time</label>
-                      <input id="timepicker" class="timepicker" type="time" />
+                    <div className="col s6">
+                      <label for="end_time">End time</label>
+                      <input id="end_time" className="timepicker" type="time" />
                     </div>
                   </div>
                 </form>
@@ -90,9 +89,9 @@ class App extends Component {
                       <p>When did you change the diaper?</p>
                     </div>
 
-                    <div className="input-field col s6">
+                    <div className="col s6">
                       <label for="timepicker">Change time</label>
-                      <input id="timepicker" class="timepicker" type="time" />
+                      <input id="timepicker" className="timepicker" type="time" />
                     </div>
                   </div>
                 </form>
