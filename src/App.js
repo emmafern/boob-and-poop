@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Row, Col } from 'react-materialize';
+import { Button, Row, Col, Input } from 'react-materialize';
 import './App.css';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TimePicker from 'material-ui/TimePicker';
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
 
 class App extends Component {
   render() {
@@ -11,94 +17,74 @@ class App extends Component {
           <h2><code>( o )( o ) && (_*_)</code></h2>
 
         </div>
-        <h4 className="App-intro">
-          Track your baby's inputs and outputs
-        </h4>
 
-        <div>
+        <div className="container">
           <Row>
-            <Col s={12}>
-              <div className="container">
+            <Col s={4}></Col>
+            <Col s={4}>
+              <form action="#">
 
-                <form action="#">
+                <div className="row">
+                  <p>What side did you nurse on?</p>
+                  <Input className="with-gap" name="nurse-side" type="radio" id="left-boob" value="left" label="Left" />
+                  <Input className="with-gap" name="nurse-side" type="radio" id="right_boob" value="right" label="Right" />
+                </div>
 
-                  <div className="row">
-                    <div className="col s12">
-                      <p>What side did you nurse on?</p>
-                    </div>
+                <div className="row">
+                  <p>How long did you nurse?</p>
 
-                    <div className="input-field col s6">
-                      <input className="with-gap" name="group1" type="radio" id="left_boob" />
-                      <label for="left_boob">Left</label>
-                    </div>
+                  <MuiThemeProvider>
+                    <TimePicker
+                      hintText="Start time"
+                      autoOk={true}
+                    />
+                  </MuiThemeProvider>
 
-                    <div className="input-field col s6">
-                      <input className="with-gap" name="group1" type="radio" id="right_boob" />
-                      <label for="right_boob">Right</label>
-                    </div>
-                  </div>
+                  <MuiThemeProvider>
+                    <TimePicker
+                      hintText="End time"
+                      autoOk={true}
+                    />
+                  </MuiThemeProvider>
+                </div>
 
-                  <div className="row">
-                    <div className="col s12">
-                      <p>How long did you nurse?</p>
-                    </div>
+              </form>
 
-                    <div className="col s6">
-                      <label for="start_time">Start time</label>
-                      <input id="start_time" className="timepicker" type="time" />
-                    </div>
-
-                    <div className="col s6">
-                      <label for="end_time">End time</label>
-                      <input id="end_time" className="timepicker" type="time" />
-                    </div>
-                  </div>
-                </form>
-
-                <Button waves='light'>Save Boob</Button>
-              </div>
+              <Button waves='light'>Save Boob</Button>
             </Col>
+            <Col s={4}></Col>
           </Row>
+        </div>
 
           <br/>
           <br/>
 
+        <div className="container">
           <Row>
-            <Col s={12}>
-              <div className="container">
+            <Col s={4}></Col>
+            <Col s={4}>
+              <form action="#">
+                <div className="row">
+                  <p>What was in the diaper?</p>
+                  <Input type="checkbox" id="pee_diaper" label="Pee" />
+                  <Input type="checkbox" id="poo_diaper" label="Poo" />
+                </div>
 
-                <form action="#">
-                  <div className="row">
-                    <div className="col s12">
-                      <p>What was in the diaper?</p>
-                    </div>
+                <div className="row">
+                  <p>When did you change the diaper?</p>
 
-                    <div className="input-field col s6">
-                      <input type="checkbox" id="pee_diaper" />
-                      <label for="pee_diaper">Pee</label>
-                    </div>
+                  <MuiThemeProvider>
+                    <TimePicker
+                      hintText="Change time"
+                      autoOk={true}
+                    />
+                  </MuiThemeProvider>
+                </div>
+              </form>
 
-                    <div className="input-field col s6">
-                      <input type="checkbox" id="poo_diaper" />
-                      <label for="poo_diaper">Poo</label>
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="col s12">
-                      <p>When did you change the diaper?</p>
-                    </div>
-
-                    <div className="col s6">
-                      <label for="timepicker">Change time</label>
-                      <input id="timepicker" className="timepicker" type="time" />
-                    </div>
-                  </div>
-                </form>
-
-                <Button waves='light'>Save Poop</Button>
-              </div>
+              <Button waves='light'>Save Poop</Button>
             </Col>
+            <Col s={4}></Col>
           </Row>
         </div>
       </div>
