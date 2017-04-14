@@ -57,7 +57,9 @@ export default class PoopForm extends Component {
     return (
       <div>
         <form action="#">
-          <h4 className="emoji"><code>(_*_)</code></h4>
+          <div className="row emoji-header">
+            <h4 className="emoji"><code>(_*_)</code></h4>
+          </div>
 
           <div className="row">
             <p>What was in the diaper?</p>

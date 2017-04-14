@@ -57,7 +57,9 @@ export default class BoobForm extends Component {
     return (
       <div>
         <form>
-          <h4 className="emoji"><code>( o )( o )</code></h4>
+          <div className="row emoji-header">
+            <h4 className="emoji"><code>( o )( o )</code></h4>
+          </div>
 
           <div className="row">
             <p>What side did you nurse on?</p>
