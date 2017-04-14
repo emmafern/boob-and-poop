@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+.emoji-header {
+  background-color: #FCE4EC ;
+}
+
 .navbar {
   background-color: black;
 }

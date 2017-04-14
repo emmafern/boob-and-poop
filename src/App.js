@@ -27,7 +27,6 @@ class App extends Component {
         </div>
 
         <br/>
-        <br/>
 
         <div className="container">
           <Row>
