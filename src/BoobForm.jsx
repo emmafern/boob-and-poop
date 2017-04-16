@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import { Button, Input } from 'react-materialize';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import DatePicker from 'material-ui/DatePicker';
@@ -47,10 +48,41 @@ export default class BoobForm extends Component {
 
   _saveBoobClicked(event) {
     event.preventDefault();
-    console.log('You have selected:', this.state.selectedBoob);
-    console.log('You have selected:', this.state.nurseStartTime);
-    console.log('You have selected:', this.state.nurseEndTime);
-    console.log('You have selected:', this.state.nurseDate);
+    console.log('selectedBoob:', this.state.selectedBoob);
+    console.log('nurseStartTime:', this.state.nurseStartTime);
+    console.log('nurseEndTime:', this.state.nurseEndTime);
+    console.log('nurseDate:', this.state.nurseDate);
+
+    this._saveDataToFirebase(
+      this.state.selectedBoob,
+      this.state.nurseStartTime,
+      this.state.nurseEndTime,
+      this.state.nurseDate
+    )
+
+    this.setState({
+      selectedBoob: this.state.selectedBoob,
+      nurseStartTime: null,
+      nurseEndTime: null,
+      nurseDate: null
+    });
+  }
+
+  _saveDataToFirebase(boob, start, end, date) {
+    this.firebaseRef.push({
+      selectedBoob: boob,
+      nurseStartTime: start.toString(),
+      nurseEndTime: end.toString(),
+      nurseDate: date.toString()
+    });
+  }
+
+  componentWillMount() {
+    this.firebaseRef = firebase.database().ref("boobs/");
+  }
+
+  componentWillUnmount() {
+    this.firebaseRef.off();
   }
 
   render() {
