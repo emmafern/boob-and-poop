@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 import { Button, Input } from 'react-materialize';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import TimePicker from 'material-ui/TimePicker';
@@ -51,6 +52,37 @@ export default class PoopForm extends Component {
     console.log('You have selected:', this.state.pooChecked);
     console.log('You have selected:', this.state.diaperTime);
     console.log('You have selected:', this.state.diaperDate);
+
+    this._saveDataToFirebase(
+      this.state.peeChecked,
+      this.state.pooChecked,
+      this.state.diaperTime,
+      this.state.diaperDate
+    )
+
+    this.setState({
+      peeChecked: null,
+      pooChecked: null,
+      diaperTime: null,
+      diaperDate: null
+    });
+  }
+
+  _saveDataToFirebase(pee, poo, time, date) {
+    this.firebaseRef.push({
+      peeChecked: pee,
+      pooChecked: poo,
+      diaperTime: time.toString(),
+      diaperDate: date.toString()
+    });
+  }
+
+  componentWillMount() {
+    this.firebaseRef = firebase.database().ref("poops/");
+  }
+
+  componentWillUnmount() {
+    this.firebaseRef.off();
   }
 
   render() {
