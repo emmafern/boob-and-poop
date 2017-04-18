@@ -9,28 +9,47 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tag above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
     <title>Boob and Poop</title>
+    <script src="email-authentication.js"></script>
   </head>
   <body>
+    <div class="email-authentication-form container">
+      <p>Sign in to an existing account or sign up</p>
+
+      <div class="input-field inline">
+        <input class="" type="text" id="email" name="email" placeholder="Email"/>
+      </div>
+
+      <div class="input-field inline">
+        <input class="" type="password" id="password" name="password" placeholder="Password"/>
+      </div>
+
+      <br/><br/>
+
+      <button disabled class="waves-effect waves-light btn" id="sign-in" name="signin">Sign In</button>
+
+      <button class="waves-effect waves-light btn" id="sign-up" name="signup">Sign Up</button>
+
+      <br/><br/>
+
+      <button disabled class="waves-effect waves-light btn" id="verify-email" name="verify-email">Send Email Verification</button>
+
+      <br/><br/>
+
+      <button class="waves-effect waves-light btn" id="password-reset" name="verify-email">Send Password Reset Email</button>
+
+      <!-- Container where we'll display the user details -->
+<!--       <div class="user-details-container">
+        Firebase sign-in status: <span id="sign-in-status">Unknown</span>
+        <div>Firebase auth <code>currentUser</code> object value:</div>
+        <pre><code id="account-details">null</code></pre>
+      </div> -->
+    <!-- </div> -->
+
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<!--       To begin the development, run `npm start`.
+      To create a production bundle, use `npm run build`. -->
 
-      To begin the development, run `npm start`.
-      To create a production bundle, use `npm run build`.
-    -->
   </body>
 </html>
