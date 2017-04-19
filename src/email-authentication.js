@@ -1,14 +1,4 @@
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyBIPkvrjHEtl5oNQnODhEi4u2KZtPAHYQo",
-  authDomain: "boob-and-poop.firebaseapp.com",
-  databaseURL: "https://boob-and-poop.firebaseio.com",
-  projectId: "boob-and-poop",
-  storageBucket: "boob-and-poop.appspot.com",
-  messagingSenderId: "70975468174"
-};
-firebase.initializeApp(config);
-
+import firebase from 'firebase';
 /**
  * Handles the sign in button press.
  */
@@ -70,7 +60,7 @@ function handleSignUp() {
     var errorCode = error.code;
     var errorMessage = error.message;
     // [START_EXCLUDE]
-    if (errorCode == 'auth/weak-password') {
+    if (errorCode === 'auth/weak-password') {
       alert('The password is too weak.');
     } else {
       alert(errorMessage);
@@ -108,9 +98,9 @@ function sendPasswordReset() {
     var errorCode = error.code;
     var errorMessage = error.message;
     // [START_EXCLUDE]
-    if (errorCode == 'auth/invalid-email') {
+    if (errorCode === 'auth/invalid-email') {
       alert(errorMessage);
-    } else if (errorCode == 'auth/user-not-found') {
+    } else if (errorCode === 'auth/user-not-found') {
       alert(errorMessage);
     }
     console.log(error);
@@ -133,20 +123,31 @@ function initApp() {
     // [END_EXCLUDE]
     if (user) {
       // User is signed in.
-      var displayName = user.displayName;
-      var email = user.email;
+      // var displayName = user.displayName;
+      // var email = user.email;
       var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
+      // var photoURL = user.photoURL;
+      // var isAnonymous = user.isAnonymous;
+      // var uid = user.uid;
+      // var providerData = user.providerData;
       // [START_EXCLUDE]
-      document.getElementById('sign-in-status').textContent = 'Signed in';
+      // document.getElementById('sign-in-status').textContent = 'Signed in';
       document.getElementById('sign-in').textContent = 'Sign out';
-      document.getElementById('account-details').textContent = JSON.stringify(user, null, '  ');
+      // document.getElementById('account-details').textContent = JSON.stringify(user, null, '  ');
       if (!emailVerified) {
         document.getElementById('verify-email').disabled = false;
       }
+
+      // Show Boob and Poop Forms
+      document.getElementById('boob-form').style.display = 'block';
+      document.getElementById('poop-form').style.display = 'block'; 
+
+      // Hide Auth Form
+      document.getElementById('auth-form').style.display = 'none';
+
+      // Update Sign-in Status link to Sign out
+      document.getElementById('status-action').textContent = 'sign out';
+
       // [END_EXCLUDE]
     } else {
       // User is signed out.
@@ -154,6 +155,14 @@ function initApp() {
       // document.getElementById('sign-in-status').textContent = 'Signed out';
       document.getElementById('sign-in').textContent = 'Sign in';
       // document.getElementById('account-details').textContent = 'null';
+
+      // Hide Boob and Poop forms
+      document.getElementById('boob-form').style.display = 'none';
+      document.getElementById('poop-form').style.display = 'none';
+
+      // Update Sign-in Status link to Sign-in
+      document.getElementById('status-action').textContent = 'sign in';
+
       // [END_EXCLUDE]
     }
     // [START_EXCLUDE silent]
